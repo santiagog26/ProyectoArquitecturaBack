@@ -7,6 +7,7 @@ data = cgi.FieldStorage()
 Usuario =data.getvalue('Usuario')
 NombreF =data.getvalue('Nombre')
 Nombre =hashlib.new("sha1",b"Holasebas99.")
+print(Nombre.digest())
 try:
   cnx = mysql.connector.connect(user='sebastian', password = 'Holasebas99.', database='arqui', host='127.0.0.1')
 except mysql.connector.Error as err:
