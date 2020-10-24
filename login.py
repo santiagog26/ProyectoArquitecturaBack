@@ -2,12 +2,9 @@
 import mysql.connector
 from mysql.connector import errorcode
 import cgi
-import hashlib
 data = cgi.FieldStorage()
 Usuario =data.getvalue('Usuario')
-NombreF =data.getvalue('Nombre')
-Nombre =hashlib.new("sha",b"Holasebas99.")
-print(Nombre.digest())
+Nombre =data.getvalue('Nombre')
 try:
   cnx = mysql.connector.connect(user='sebastian', password = 'Holasebas99.', database='arqui', host='127.0.0.1')
 except mysql.connector.Error as err:
@@ -22,18 +19,11 @@ else:
     print('Content-Type: text/html')
     print('')
 
-    sql = ("select* from usuario where Usuario = '{}' ".format(Usuario))
+    sql = ("select* from usuario where Usuario = '{}' and Contraseña = SHA('{}')  ".format(Usuario,Nombre))
     cur.execute(sql)
     usuariob=cur.fetchall()
     if usuariob:
-     for i in usuariob:
-      usuario=i[2]
-      nombre=i[3]
-    else:
-     print('<h1> Fallo </h1>')
-
-    if 	Nombre.digest() == nombre and Usuario == usuario:
-     print('<script> location.href="/ProyectoArquitectura/Login.html";</script>')
+      print('<script> location.href="/ProyectoArquitectura/Login.html";</script>')
     else:
      print('<h1> Fallo </h1>')
     cnx.commit()
