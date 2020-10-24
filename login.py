@@ -31,7 +31,7 @@ else:
     else:
      print('<h1> Fallo </h1>')
 
-    if 	Nombre == nombre and Usuario == usuario:
+    if 	Nombre.digest() == nombre and Usuario == usuario:
      print('<script> location.href="/ProyectoArquitectura/Login.html";</script>')
     else:
      print('<h1> Fallo </h1>')
