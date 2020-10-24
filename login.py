@@ -2,6 +2,7 @@
 import mysql.connector
 from mysql.connector import errorcode
 import cgi
+import hashlib
 data = cgi.FieldStorage()
 Usuario =data.getvalue('Usuario')
 Nombre =data.getvalue('Nombre')
@@ -25,7 +26,7 @@ else:
     if usuariob:
      for i in usuariob:
       usuario=i[2]
-      nombre=i[0]
+      nombre=hashlib.new("sha1",i[3])
     else:
      print('<h1> Fallo </h1>')
 
