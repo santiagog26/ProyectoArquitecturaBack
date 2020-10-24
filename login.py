@@ -30,7 +30,7 @@ else:
      print('<h1> Fallo </h1>')
 
     if 	Nombre == nombre and Usuario == usuario:
-     print('<script> location.href="ProyectoArqutectura/Login.html";</script>')
+     print('<script> location.href="/ProyectoArqutectura/Login.html";</script>')
     else:
      print('<h1> Fallo </h1>')
     cnx.commit()
