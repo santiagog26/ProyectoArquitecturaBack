@@ -4,7 +4,7 @@ from mysql.connector import errorcode
 import cgi
 data = cgi.FieldStorage()
 Usuario =data.getvalue('Usuario')
-Nombre =data.getvalue('Nombre')
+Contra =data.getvalue('Contra')
 try:
   cnx = mysql.connector.connect(user='sebastian', password = 'Holasebas99.', database='arqui', host='127.0.0.1')
 except mysql.connector.Error as err:
@@ -19,7 +19,7 @@ else:
     print('Content-Type: text/html')
     print('')
 
-    sql = ("select* from usuario where Usuario = '{}' and Contraseña = SHA('{}')  ".format(Usuario,Nombre))
+    sql = ("select* from usuario where Usuario = '{}' and Contraseña = SHA('{}')  ".format(Usuario,Contra))
     cur.execute(sql)
     usuariob=cur.fetchall()
     if usuariob:
