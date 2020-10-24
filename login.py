@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-import hashlib
 import mysql.connector
 from mysql.connector import errorcode
 import cgi
