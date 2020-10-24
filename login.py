@@ -1,10 +1,11 @@
 #!/usr/bin/python3
+import hashlib
 import mysql.connector
 from mysql.connector import errorcode
 import cgi
 data = cgi.FieldStorage()
 Usuario =data.getvalue('Usuario')
-Nombre =data.getvalue('Nombre')
+Contraseña =data.getvalue('Contraseña')
 try:
   cnx = mysql.connector.connect(user='sebastian', password = 'Holasebas99.', database='arqui', host='127.0.0.1')
 except mysql.connector.Error as err:
@@ -25,11 +26,11 @@ else:
     if usuariob:
      for i in usuariob:
       usuario=i[2]
-      nombre=i[0]
+      contraseña=i[0]
     else:
      print('<h1> Fallo </h1>')
 
-    if 	Nombre == nombre and Usuario == usuario:
+    if 	Contraseña == contraseña and Usuario == usuario:
      print('<script> location.href="/ProyectoArquitectura/Login.html";</script>')
     else:
      print('<h1> Fallo </h1>')
