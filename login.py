@@ -23,7 +23,7 @@ else:
     cur.execute(sql)
     usuariob=cur.fetchall()
     if usuariob:
-      print('<script> location.href="/ProyectoArquitectura/index.html";</script>')
+      print('<script> location.href="/ProyectoArquitectura/menu.html";</script>')
     else:
      print('<h1> Fallo </h1>')
     cnx.commit()
