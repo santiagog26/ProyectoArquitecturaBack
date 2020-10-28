@@ -3,10 +3,9 @@ import mysql.connector
 from mysql.connector import errorcode
 import cgi
 data = cgi.FieldStorage()
-Idp =data.getvalue('idp')
 Nombrep =data.getvalue('nombrep')
 Descripcionp =data.getvalue('descripcionp')
-preciop =data.getvalue('preciop')
+preciop =int(data.getvalue('preciop'))
 try:
   cnx = mysql.connector.connect(user='sebastian', password = 'Holasebas99.', database='proyecto', host='127.0.0.1')
 except mysql.connector.Error as err:
@@ -20,7 +19,7 @@ else:
     cur = cnx.cursor()
     print('Content-Type: text/html')
     print('')
-    sql = ("insert into producto values ('{}','{}','{}','{}')".format(Idp,Nombrep,Descripcionp,preciop))
+    sql = ("insert into producto (nombre_producto, descripcion, precio) values ('{}','{}','{}')".format(Nombrep,Descripcionp,preciop))
     cur.execute(sql)
     print('<script>alert("Registro exitoso de un Producto ")</script>')
     print('<script> location.href="/ProyectoArquitectura/menu.html";</script>')
