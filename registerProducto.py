@@ -1,8 +1,8 @@
 #!/usr/bin/python3
+from jinja2 import Template
 import mysql.connector
 from mysql.connector import errorcode
 import cgi
-from jinja2 import Template
 data = cgi.FieldStorage()
 Nombrep =data.getvalue('nombrep')
 Descripcionp =data.getvalue('descripcionp')
@@ -28,9 +28,9 @@ else:
     #print('<script>alert("Registro exitoso de un Producto ")</script>')
     #print('<script> location.href="/ProyectoArquitectura/menu.html";</script>')
     with open('/ProyectoArquitectura/menu.html') as f:
-        doc = f.read()
-        template = Template(doc)
-        page = template.render(idp=id)
-        print(page)
+      doc = f.read()
+      template = Template(doc)
+      page = template.render(idp=id)
+      print(page)
     cnx.commit()
 cnx.close()
