@@ -10,7 +10,6 @@ Contraseña =data.getvalue('contraseña')
 Correo =data.getvalue('correo')
 Telefono =data.getvalue('telefono')
 Rol =data.getvalue('rol')
-print(Nombre)
 try:
   cnx = mysql.connector.connect(user='sebastian', password = 'Holasebas99.', database='proyecto', host='127.0.0.1')
 except mysql.connector.Error as err:
@@ -24,11 +23,10 @@ else:
     cur = cnx.cursor()
     print('Content-Type: text/html')
     print('')
-
     sql = ("insert into usuario values ('{}',SHA('{}'),'{}','{}','{}','{}')".format(Documento,Contraseña,Nombre,Apellido,Correo,Telefono))
     cur.execute(sql)
+    print('<script> location.href="/ProyectoArquitectura/index.html";</script>')
     cnx.commit()
-
 cnx.close()
 
 
