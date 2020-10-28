@@ -28,14 +28,17 @@ else:
     if Rol == 1:
       sql = ("insert into vendedor (documento_vendedor) values ('{}')".format(Documento))
       cur.execute(sql)
+      print('<script> location.href="/ProyectoArquitectura/menu.html";</script>')
       print('<script>alert("Registro exitoso de un vendedor ")</script>')
     if Rol == 2:
       sql = ("insert into domiciliario (documento_domiciliario) values ('{}')".format(Documento))
       cur.execute(sql)
+      print('<script> location.href="/ProyectoArquitectura/menu.html";</script>')
       print('<script>alert("Registro exitoso de un domiciliario ")</script>')
     if Rol == 3:
       sql = ("insert into empacador (documento_empacador) values ('{}')".format(Documento))
       cur.execute(sql)
+      print('<script> location.href="/ProyectoArquitectura/menu.html";</script>')
       print('<script>alert("Registro exitoso de un enpacador ")</script>')
     cnx.commit()
 cnx.close()
