@@ -9,7 +9,7 @@ Documento =data.getvalue('documento')
 Contraseña =data.getvalue('contraseña')
 Correo =data.getvalue('correo')
 Telefono =data.getvalue('telefono')
-Rol =data.getvalue('rol')
+Rol =int(data.getvalue('rol'))
 try:
   cnx = mysql.connector.connect(user='sebastian', password = 'Holasebas99.', database='proyecto', host='127.0.0.1')
 except mysql.connector.Error as err:
@@ -25,10 +25,10 @@ else:
     print('')
     sql = ("insert into usuario values ('{}',SHA('{}'),'{}','{}','{}','{}')".format(Documento,Contraseña,Nombre,Apellido,Correo,Telefono))
     cur.execute(sql)
-    print('<h1> Fallo {} </h1>'.format(Rol))
     if Rol == 1:
       sql = ("insert into vendedor (documento_vendedor) values ('{}')".format(Documento))
       cur.execute(sql)
+      print('<h1> Fallo {} </h1>'.format(Rol))
     if Rol == 2:
       sql = ("insert into domiciliario (documento_domiciliario) values ('{}')".format(Documento))
       cur.execute(sql)
