@@ -10,6 +10,7 @@ Contraseña =data.getvalue('contraseña')
 Correo =data.getvalue('correo')
 Telefono =data.getvalue('telefono')
 Rol =data.getvalue('rol')
+print(Nombre)
 try:
   cnx = mysql.connector.connect(user='sebastian', password = 'Holasebas99.', database='proyecto', host='127.0.0.1')
 except mysql.connector.Error as err:
