@@ -25,12 +25,14 @@ else:
     sql = ("select id_producto from producto where nombre_producto='{}'".format(Nombrep))
     cur.execute(sql)
     id=cur.fetchall()
+    for i in id:
+        idi=i[0]
     #print('<script>alert("Registro exitoso de un Producto ")</script>')
     #print('<script> location.href="/ProyectoArquitectura/menu.html";</script>')
     with open('/ProyectoArquitectura/menu.html') as f:
       doc = f.read()
       template = Template(doc)
-      page = template.render(idp=id)
+      page = template.render(idp=idi)
       print(page)
     cnx.commit()
 cnx.close()
