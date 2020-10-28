@@ -28,17 +28,5 @@ else:
     sql = ("insert into usuario values ('{}',SHA('{}'),'{}','{}','{}','{}')".format(Documento,Contraseña,Nombre,Apellido,Correo,Telefono))
     cur.execute(sql)
     cnx.commit()
-    if Rol == 1:
-      sql = ("insert into vendedor (documento_vendedor) values ('{}')".format(Documento))
-      cur.execute(sql)
-      cnx.commit()
-    if Rol == 2:
-      sql = ("insert into domiciliario (documento_domiciliario) values ('{}')".format(Documento))
-      cur.execute(sql)
-      cnx.commit()
-    if Rol == 3:
-      sql = ("insert into empacador (documento_empacador) values ('{}')".format(Documento))
-      cur.execute(sql)
-      cnx.commit()
-
+    
 cnx.close()
