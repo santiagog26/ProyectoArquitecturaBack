@@ -2,6 +2,7 @@
 import mysql.connector
 from mysql.connector import errorcode
 import cgi
+from jinja2 import Template
 data = cgi.FieldStorage()
 Nombrep =data.getvalue('nombrep')
 Descripcionp =data.getvalue('descripcionp')
@@ -21,7 +22,14 @@ else:
     print('')
     sql = ("insert into producto (nombre_producto, descripcion, precio) values ('{}','{}','{}')".format(Nombrep,Descripcionp,preciop))
     cur.execute(sql)
+    sql = ("select id_producto from producto where nombre_producto='{}'".format(Nombrep))
+    id=cur.fetchall()
     print('<script>alert("Registro exitoso de un Producto ")</script>')
-    print('<script> location.href="/ProyectoArquitectura/menu.html";</script>')
+    #print('<script> location.href="/ProyectoArquitectura/menu.html";</script>')
+    with open('/ProyectoArquitectura/menu.html') as f:
+        doc = f.read()
+        template = Template(doc)
+        page = template.render(idp=id)
+        print(page)
     cnx.commit()
 cnx.close()
