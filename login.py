@@ -3,10 +3,10 @@ import mysql.connector
 from mysql.connector import errorcode
 import cgi
 data = cgi.FieldStorage()
-Usuario =data.getvalue('Usuario')
+Documento =data.getvalue('documento')
 Contra =data.getvalue('Contra')
 try:
-  cnx = mysql.connector.connect(user='sebastian', password = 'Holasebas99.', database='arqui', host='127.0.0.1')
+  cnx = mysql.connector.connect(user='sebastian', password = 'Holasebas99.', database='proyecto', host='127.0.0.1')
 except mysql.connector.Error as err:
   if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
     print("Something is wrong with your user name or password")
@@ -19,7 +19,7 @@ else:
     print('Content-Type: text/html')
     print('')
 
-    sql = ("select* from usuario where Usuario = '{}' and Contraseña = SHA('{}')  ".format(Usuario,Contra))
+    sql = ("select * from usuario where documento = '{}' and contraseña = SHA('{}')  ".format(Documento,Contra))
     cur.execute(sql)
     usuariob=cur.fetchall()
     if usuariob:
