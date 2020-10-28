@@ -23,8 +23,9 @@ else:
     sql = ("insert into producto (nombre_producto, descripcion, precio) values ('{}','{}','{}')".format(Nombrep,Descripcionp,preciop))
     cur.execute(sql)
     sql = ("select id_producto from producto where nombre_producto='{}'".format(Nombrep))
+    cur.execute(sql)
     id=cur.fetchall()
-    print('<script>alert("Registro exitoso de un Producto ")</script>')
+    #print('<script>alert("Registro exitoso de un Producto ")</script>')
     #print('<script> location.href="/ProyectoArquitectura/menu.html";</script>')
     with open('/ProyectoArquitectura/menu.html') as f:
         doc = f.read()
