@@ -25,7 +25,7 @@ else:
     print('')
     sql = ("insert into usuario values ('{}',SHA('{}'),'{}','{}','{}','{}')".format(Documento,Contraseña,Nombre,Apellido,Correo,Telefono))
     cur.execute(sql)
-    print('<script> location.href="/ProyectoArquitectura/index.html";</script>')
+    print('<h1> Fallo {} </h1>'.format(Rol))
     if Rol == 1:
       sql = ("insert into vendedor (documento_vendedor) values ('{}')".format(Documento))
       cur.execute(sql)
