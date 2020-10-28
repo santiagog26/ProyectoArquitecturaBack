@@ -10,6 +10,7 @@ Contraseña =data.getvalue('contraseña')
 Correo =data.getvalue('correo')
 Telefono =data.getvalue('telefono')
 Rol =data.getvalue('rol')
+print(Nombre)
 try:
   cnx = mysql.connector.connect(user='sebastian', password = 'Holasebas99.', database='proyecto', host='127.0.0.1')
 except mysql.connector.Error as err:
@@ -27,17 +28,5 @@ else:
     sql = ("insert into usuario values ('{}',SHA('{}'),'{}','{}','{}','{}')".format(Documento,Contraseña,Nombre,Apellido,Correo,Telefono))
     cur.execute(sql)
     cnx.commit()
-    if Rol == 1:
-      sql = ("insert into vendedor (documento_vendedor) values ('{}')".format(Documento))
-      cur.execute(sql)
-      cnx.commit()
-    if Rol == 2:
-      sql = ("insert into domiciliario (documento_domiciliario) values ('{}')".format(Documento))
-      cur.execute(sql)
-      cnx.commit()
-    if Rol == 3:
-      sql = ("insert into empacador (documento_empacador) values ('{}')".format(Documento))
-      cur.execute(sql)
-      cnx.commit()
-
+    
 cnx.close()
