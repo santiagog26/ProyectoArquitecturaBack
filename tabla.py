@@ -1,10 +1,8 @@
 #!/usr/bin/python3
 import mysql.connector
-from jinja2 import Template
-from flask import Flask, render_template
 from mysql.connector import errorcode
+from flask import Flask, render_template
 import cgi
-app = Flask(__name__)
 data = cgi.FieldStorage()
 Documento =data.getvalue('documento')
 Contra =data.getvalue('Contra')
@@ -21,12 +19,12 @@ else:
     cur = cnx.cursor()
     print('Content-Type: text/html')
     print('')
-
     sql = ("select * from pedido")
     cur.execute(sql)
     pedido=cur.fetchall()
     cnx.commit()
 cnx.close()
+app = Flask(__name__)
 pedidob = {
     ("1","2","3","4","5","6")
 
