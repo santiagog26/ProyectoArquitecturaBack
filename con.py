@@ -2,7 +2,7 @@
 import mysql.connector
 from mysql.connector import errorcode
 import cgi
-import json
+from flask import Flask, render_template
 data = cgi.FieldStorage()
 Documento =data.getvalue('documento')
 Contra =data.getvalue('Contra')
@@ -23,7 +23,10 @@ else:
     sql = ("select * from pedido")
     cur.execute(sql)
     pedido=cur.fetchall()
-    pedidos = ','.join(str(v) for v in pedido)
-    pedido_dict = json.loads(pedidos)
     cnx.commit()
 cnx.close()
+
+
+@app.route("/")
+def table():
+  return render_template("table.html",data=pedido)
