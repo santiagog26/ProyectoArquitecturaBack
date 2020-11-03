@@ -25,10 +25,10 @@ else:
     cnx.commit()
 cnx.close()
 app = Flask(__name__)
-pedidob = {
+data = {
     ("1","2","3","4","5","6"),
 }
 
 @app.route("/")
 def table():
-  return render_template("ProyectoArquitectura/menu.html",data=pedidob)
+  return render_template("ProyectoArquitectura/menu.html",data=data)
