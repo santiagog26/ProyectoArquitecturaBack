@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 import mysql.connector
-from mysql.connector import errorcode
-import cgi
 from jinja2 import Template
 from flask import Flask, render_template
+from mysql.connector import errorcode
+import cgi
 app = Flask(__name__)
 data = cgi.FieldStorage()
 Documento =data.getvalue('documento')
