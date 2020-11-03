@@ -23,6 +23,7 @@ else:
     sql = ("select * from pedido")
     cur.execute(sql)
     pedido=cur.fetchall()
-    pedido_dict = json.loads(pedido)
+    pedidos = "".join(pedido)
+    pedido_dict = json.loads(pedidos)
     cnx.commit()
 cnx.close()
