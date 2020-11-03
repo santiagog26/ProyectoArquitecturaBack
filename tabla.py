@@ -24,6 +24,7 @@ else:
     cur.execute(sql)
     pedido=cur.fetchall()
     cnx.commit()
+    app = Flask(__name__)
 cnx.close()
 
 
