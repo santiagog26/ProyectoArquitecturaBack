@@ -33,4 +33,4 @@ pedidob = {
 
 @app.route("/")
 def table():
-  return render_template("table.html",data=pedidob)
+  return render_template("ProyectoArquitectura/menu.html",data=pedidob)
