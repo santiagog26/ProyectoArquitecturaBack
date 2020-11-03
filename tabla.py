@@ -26,8 +26,11 @@ else:
     pedido=cur.fetchall()
     cnx.commit()
 cnx.close()
+pedidob = {
+    ("1","2","3","4","5","6")
 
+}
 
 @app.route("/")
 def table():
-  return render_template("table.html",data=pedido)
+  return render_template("table.html",data=pedidob)
