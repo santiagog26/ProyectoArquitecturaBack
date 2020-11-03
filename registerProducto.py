@@ -33,7 +33,7 @@ else:
     '''with open('/ProyectoArquitectura/menu.html') as f:
       doc = f.read()
       template = Template(doc)
-      page = template.render(idp=id[0])
+      page = template.render(idp=idi )
       print(page)'''
     cnx.commit()
 cnx.close()
