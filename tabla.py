@@ -13,8 +13,6 @@ def infTabla(numero_orden,fecha,cliente,empacador,vendedor, domiciliario):
     
 
 data = cgi.FieldStorage()
-Documento =data.getvalue('documento')
-Contra =data.getvalue('Contra')
 try:
   cnx = mysql.connector.connect(user='sebastian', password = 'Holasebas99.', database='proyecto', host='127.0.0.1')
 except mysql.connector.Error as err:
