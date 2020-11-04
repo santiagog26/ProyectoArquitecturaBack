@@ -1,7 +1,7 @@
 #!/usr/bin/python3
+from jinja2 import Template
 import mysql.connector
 from mysql.connector import errorcode
-from jinja2 import Template
 import cgi
 
 def infTabla(numero_orden,fecha,cliente,empacador,vendedor, domiciliario):
