@@ -26,6 +26,8 @@ else:
     print('')
     sql = ("insert into usuario values ('{}',SHA('{}'),'{}','{}','{}','{}')".format(Documento,Contraseña,Nombre,Apellido,Correo,Telefono))#codigo de mysql para insertar un Usuario 
     cur.execute(sql)
+    print('<script>alert("Registro exitoso")</script>')#alerta de que el registro fue exitoso 
+    print('<script> location.href="/ProyectoArquitectura/menu.html";</script>')#me devuelve al menu.html
     #verifica el rol del usuario 
     if Rol == 1: 
       sql = ("insert into vendedor (documento_vendedor) values ('{}')".format(Documento))#codigo de mysql para insertar el documento de un vendedor  
