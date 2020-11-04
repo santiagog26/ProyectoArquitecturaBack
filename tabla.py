@@ -5,7 +5,7 @@ from jinja2 import Template
 import cgi
 
 def infTabla(numero_orden,fecha,cliente,empacador,vendedor, domiciliario):
-    with open('/var/www/html/ProyectoArquitectura/index.html') as f:
+    with open('/var/www/html/ProyectoArquitectura/menu.html') as f:
         doc = f.read()
         template = Template(doc)
         page = template.render(numeroOrden=numero_orden, fecha=fecha, cliente=cliente, empacador=empacador, vendedor=vendedor, domiciliario=domiciliario)
