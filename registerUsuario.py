@@ -3,13 +3,14 @@ import mysql.connector
 from mysql.connector import errorcode
 import cgi
 data = cgi.FieldStorage()
-Nombre =data.getvalue('nombres')
-Apellido =data.getvalue('apellidos')
-Documento =data.getvalue('documento')
-Contraseña =data.getvalue('contraseña')
-Correo =data.getvalue('correo')
-Telefono =data.getvalue('telefono')
-Rol =int(data.getvalue('rol'))
+Nombre =data.getvalue('nombres')#obtiene informacion del formulario 
+Apellido =data.getvalue('apellidos')#obtiene informacion del formulario 
+Documento =data.getvalue('documento')#obtiene informacion del formulario 
+Contraseña =data.getvalue('contraseña')#obtiene informacion del formulario 
+Correo =data.getvalue('correo')#obtiene informacion del formulario 
+Telefono =data.getvalue('telefono')#obtiene informacion del formulario 
+Rol =int(data.getvalue('rol'))#obtiene informacion del formulario 
+#conexion a base de datos 
 try:
   cnx = mysql.connector.connect(user='sebastian', password = 'Holasebas99.', database='proyecto', host='127.0.0.1')
 except mysql.connector.Error as err:
@@ -23,23 +24,24 @@ else:
     cur = cnx.cursor()
     print('Content-Type: text/html')
     print('')
-    sql = ("insert into usuario values ('{}',SHA('{}'),'{}','{}','{}','{}')".format(Documento,Contraseña,Nombre,Apellido,Correo,Telefono))
+    sql = ("insert into usuario values ('{}',SHA('{}'),'{}','{}','{}','{}')".format(Documento,Contraseña,Nombre,Apellido,Correo,Telefono))#codigo de mysql para insertar un Usuario 
     cur.execute(sql)
-    if Rol == 1:
-      sql = ("insert into vendedor (documento_vendedor) values ('{}')".format(Documento))
+    #verifica el rol del usuario 
+    if Rol == 1: 
+      sql = ("insert into vendedor (documento_vendedor) values ('{}')".format(Documento))#codigo de mysql para insertar el documento de un vendedor  
       cur.execute(sql)
-      print('<script>alert("Registro exitoso de un vendedor ")</script>')
-      print('<script> location.href="/ProyectoArquitectura/menu.html";</script>')
+      print('<script>alert("Registro exitoso de un vendedor ")</script>')#alerta de que el registro fue exitoso 
+      print('<script> location.href="/ProyectoArquitectura/menu.html";</script>')#me devuelve al menu.html
     if Rol == 2:
-      sql = ("insert into domiciliario (documento_domiciliario) values ('{}')".format(Documento))
+      sql = ("insert into domiciliario (documento_domiciliario) values ('{}')".format(Documento))#codigo de mysql para insertar el documento de un domiciliario 
       cur.execute(sql)
-      print('<script>alert("Registro exitoso de un domiciliario ")</script>')
-      print('<script> location.href="/ProyectoArquitectura/menu.html";</script>')
+      print('<script>alert("Registro exitoso de un domiciliario ")</script>')#alerta de que el registro fue exitoso 
+      print('<script> location.href="/ProyectoArquitectura/menu.html";</script>')#me devuelve al menu.html
     if Rol == 3:
-      sql = ("insert into empacador (documento_empacador) values ('{}')".format(Documento))
+      sql = ("insert into empacador (documento_empacador) values ('{}')".format(Documento))#codigo de mysql para insertar el documento de un empacador  
       cur.execute(sql)
-      print('<script>alert("Registro exitoso de un enpacador ")</script>')
-      print('<script> location.href="/ProyectoArquitectura/menu.html";</script>')
+      print('<script>alert("Registro exitoso de un enpacador ")</script>')#alerta de que el registro fue exitoso 
+      print('<script> location.href="/ProyectoArquitectura/menu.html";</script>')#me devuelve al menu.html
     cnx.commit()
 cnx.close()
 
