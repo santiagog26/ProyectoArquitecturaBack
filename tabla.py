@@ -1,9 +1,8 @@
 #!/usr/bin/python3
-from jinja2 import Template
 import mysql.connector
 from mysql.connector import errorcode
 import cgi
-
+from jinja2 import Template
 def infTabla(numero_orden,fecha,cliente,empacador,vendedor, domiciliario):
     with open('/var/www/html/ProyectoArquitectura/menu.html') as f:
         doc = f.read()
