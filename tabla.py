@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 import mysql.connector
 from mysql.connector import errorcode
-import cgi
 from jinja2 import Template
+import cgi
+
 def infTabla(numero_orden,fecha,cliente,empacador,vendedor, domiciliario):
     with open('/var/www/html/ProyectoArquitectura/menu.html') as f:
         doc = f.read()
@@ -30,6 +31,7 @@ else:
     sql = ("select * from pedido")
     cur.execute(sql)
     pedido=cur.fetchall()
+    cnx.commit()
     for i in pedido:
         numero_orden=i[0]
         fecha=i[1]
