@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 import mysql.connector
 from mysql.connector import errorcode
-from flask import Flask, render_template
 import cgi
 data = cgi.FieldStorage()
 Documento =data.getvalue('documento')
@@ -24,11 +23,4 @@ else:
     pedido=cur.fetchall()
     cnx.commit()
 cnx.close()
-app = Flask(__name__)
-data = {
-    ("1","2","3","4","5","6"),
-}
 
-@app.route("/")
-def table():
-  return render_template("ProyectoArquitectura/menu.html",data=data)
