@@ -63,7 +63,7 @@ else:
     print('        </div>')
     print('    </main>')
     print('<!-- inicio -->')
-    print('<div id="ini" style="display: none">')
+    print('<div id="ini" >')
     print('    <div id="tabla" style="">')
     print('     <div  id = " main-container " >')
     print('            <form action="/cgi-bin/ProyectoArquitecturaBack/tabla.py" method="POST" >    ')
@@ -216,7 +216,7 @@ else:
     print('        </div>')
     print('    </div>')
     print('</body>')
-    print('<script src="/ProyectoArquitectura/js/js.js"> </script>')
+    print('<script src="/var/www/html/ProyectoArquitectura/js/js.js"> </script>')
     print('</html>')
     
 cnx.close()
