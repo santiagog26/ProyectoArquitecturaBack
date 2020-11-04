@@ -39,6 +39,5 @@ else:
         vendedor=i[4]
         domiciliario=i[5]
         infTabla(numero_orden,fecha,cliente,empacador,vendedor, domiciliario)
-    cnx.commit()
 cnx.close()
 
