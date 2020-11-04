@@ -21,7 +21,7 @@ else:
     print('')
     sql = ("update pedido set domicilio=(select rol from domiciliario where documento_domiciliario='{}') where numero_orden='{}';".format(Documento,Numero_pedido))#codigo de mysql para actualizar un pedido
     cur.execute(sql)
-    print('<script>alert("pedido empacado y actualizado ")</script>')#alerta de que se actualizo el pedido
+    print('<script>alert("pedido entregado ")</script>')#alerta de que se actualizo el pedido
     print('<script> location.href="/ProyectoArquitectura/menu.html";</script>')#me devuelve al menu.html
     cnx.commit()
 cnx.close()
