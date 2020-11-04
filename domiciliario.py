@@ -19,7 +19,7 @@ else:
     cur = cnx.cursor()
     print('Content-Type: text/html')
     print('')
-    sql = ("update pedido set empaquetado=(select rol from empacador where documento_empacador='{}') where numero_orden='{}';".format(Documento,Numero_pedido))
+    sql = ("update pedido set domicilio=(select rol from domiciliario where documento_domiciliario='{}') where numero_orden='{}';".format(Documento,Numero_pedido))
     cur.execute(sql)
     print('<script>alert("pedido empacado y actualizado ")</script>')
     print('<script> location.href="/ProyectoArquitectura/menu.html";</script>')
