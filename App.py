@@ -21,7 +21,7 @@ def Index():
 
 @app.route('/add_usuario')
 def add_usuario():
-	return render_template('/ProyectoArquitectura/templates/home.html')
+	return render_template('/var/www/html/ProyectoArquitectura/templates/home.html')
 
 if __name__ == '__main__':
 	app.run(host='0.0.0.0', debug=True)
