@@ -20,8 +20,8 @@ CORS(app, resources={r'/*': {'origins': '*'}})
 def hellos():
     return "Hello world"
 
-@app.route('/get_usuarios', methods=['GET'])
-def mostrar_usuarios():
+@app.route('/get_pedidos', methods=['GET'])
+def mostrar_pedidos():
     try:
         cnx = mysql.connector.connect(
             user='sebastian', password = 'Holasebas99.', database='proyecto', host='127.0.0.1')
@@ -34,19 +34,19 @@ def mostrar_usuarios():
     		print(err)
     else:
     	cur = cnx.cursor()
-    	sql = ("select * from usuario")
+    	sql = ("select * from pedido")
     	cur.execute(sql)
     	row = cur.fetchall()
     	lista = list()
     	for i in row:
-    		documento = i[0]
-    		contrasena = i[1]
-    		nombre = i[2]
-    		apellido = i[3]
-    		correo = i[4]
-    		telefono = i[5]
-    		persona = {'Documento': documento, 'Contraseña': contrasena, 'Nombre': nombre, 'Apellido': apellido, 'Correo': correo, 'Telefono': telefono}
-    		lista.append(persona)
+    		numero_orden = i[0]
+    		fecha = i[1]
+    		cliente_documento = i[2]
+    		empaquetado = i[3]
+    		domicilio = i[4]
+    		vendedor = i[5]
+    		pedido = {'numero_orden': numero_orden, 'fecha': fecha, 'cliente_documento': cliente_documento, 'empaquetado': empaquetado, 'domicilio': domicilio, 'vendedor': vendedor}
+    		lista.append(pedido)
     	return jsonify(results=lista)
     cnx.close()	
 
