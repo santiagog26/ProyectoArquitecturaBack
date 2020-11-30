@@ -24,7 +24,7 @@ def hellos():
 def mostrar_pedidos():
 	print('Hello')
 	try:
-        cnx = mysql.connector.connect(
+		cnx = mysql.connector.connect(
             user='sebastian', password = 'Holasebas99.', database='proyecto', host='127.0.0.1')
     except mysql.connector.Error as err:
     	if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
