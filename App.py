@@ -20,7 +20,6 @@ CORS(app, resources={r'/*': {'origins': '*'}})
 def hellos():
     return "Hello world"
 
-CORS(app)
 @app.route('/get_pedidos', methods=['GET'])
 def mostrar_pedidos():
 	print('Hello')
