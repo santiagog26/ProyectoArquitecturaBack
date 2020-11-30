@@ -34,18 +34,18 @@ def mostrar_usuarios():
     		print(err)
     else:
     	cur = cnx.cursor()
-		sql = ("select* from usuario")
-		cur.execute(sql)
-		row = cur.fetchall()
-		lista = list()
-		for i in row:
-			documento = i[0]
-			contrasena = i[1]
-			nombre = i[2]
-			apellido = i[3]
-			correo = i[4]
-			telefono = i[5]
-			persona = {'Documento': documento,
+    	sql = ("select * from usuario")
+    	cur.execute(sql)
+    	row = cur.fetchall()
+    	lista = list()
+    	for i in row:
+    		documento = i[0]
+    		contrasena = i[1]
+    		nombre = i[2]
+    		apellido = i[3]
+    		correo = i[4]
+    		telefono = i[5]
+    		persona = {'Documento': documento,
 			'Contraseña': contrasena,
             'Nombre': nombre,
             'Apellido': apellido,
