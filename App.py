@@ -47,6 +47,8 @@ def mostrar_pedidos():
 			vendedor = i[5]
 			pedido = {'numero_orden': numero_orden, 'fecha': fecha, 'cliente_documento': cliente_documento, 'empaquetado': empaquetado, 'domicilio': domicilio, 'vendedor': vendedor}
 			lista.append(pedido)
+			cnx.commit()
+			cur.close()
 		return jsonify(results=lista)
 	cnx.close()	
 
