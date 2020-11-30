@@ -13,13 +13,12 @@ app = Flask(__name__)
 
 app.config.from_object(__name__)
 
-# enable CORS
-CORS(app, resources={r'/*': {'origins': '*'}})
-
+CORS(app)
 @app.route('/')
 def hellos():
     return "Hello world"
 
+CORS(app)
 @app.route('/get_pedidos', methods=['GET'])
 def mostrar_pedidos():
 	print('Hello')
