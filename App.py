@@ -47,7 +47,7 @@ def mostrar_usuarios():
     		telefono = i[5]
     		persona = {'Documento': documento, 'Contraseña': contrasena, 'Nombre': nombre, 'Apellido': apellido, 'Correo': correo, 'Telefono': telefono}
     		lista.append(persona)
-        return jsonify(results=lista)
+    	return jsonify(results=lista)
     cnx.close()	
 
 
