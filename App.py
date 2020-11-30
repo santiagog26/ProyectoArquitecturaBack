@@ -21,7 +21,6 @@ def hellos():
     return "Hello world"
 
 @app.route('/get_usuarios', methods=['GET'])
-def mostrar_productos():
 def mostrar_usuarios():
     try:
         cnx = mysql.connector.connect(
