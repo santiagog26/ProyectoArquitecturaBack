@@ -22,6 +22,7 @@ def hellos():
 
 @app.route('/get_pedidos', methods=['GET'])
 def mostrar_pedidos():
+	print('Hello')
     try:
         cnx = mysql.connector.connect(
             user='sebastian', password = 'Holasebas99.', database='proyecto', host='127.0.0.1')
