@@ -63,7 +63,6 @@ try:
 			cur.close()
 		return jsonify(results=lista)
 
-
 	CORS(app)
 	@app.route('/get_producto', methods=['GET'])
 	def mostrar_producto():
@@ -190,6 +189,34 @@ try:
 		cur.close()
 
 	CORS(app)
+	@app.route('/editar_producto', methods=['PUT'])
+	def edit_cli():
+		cur = cnx.cursor(buffered=True)
+		data = request.get_json(force=True)
+		id_producto = data.get('id_producto')
+		nombre_producto = data.get('nombre_producto')
+		descripcion = data.get('descripcion')
+		precio = data.get('precio')
+		cur.execute('update producto set nombre_producto = %s, descripcion = %s, precio = %s where id_producto = %s', (nombre_producto,descripcion,precio,id_producto))
+		cnx.commit()
+		cur.close()
+
+	CORS(app)
+	@app.route('/editar_pedido', methods=['PUT'])
+	def edit_ped():
+		cur = cnx.cursor(buffered=True)
+		data = request.get_json(force=True)
+		numero_orden = data.get('numero_orden')
+		fecha = data.get('fecha')
+		cliente_documento = data.get('cliente_documento')
+		empaquetado = data.get('empaquetado')
+		domicilio = data.get('domicilio')
+		vendedor = data.get('vendedor')
+		cur.execute('update pedido set fecha = %s, cliente_documento = %s, empaquetado = %s, domicilio = %s, vendedor = %s where numero_orden = %s', (fecha,cliente_documento,empaquetado,domicilio, vendedor, numero_orden))
+		cnx.commit()
+		cur.close()
+
+	CORS(app)
 	@app.route('/eliminar_usuarios', methods=['DELETE'])
 	def eliminar_user():
 		cur = cnx.cursor(buffered=True)
@@ -207,6 +234,28 @@ try:
 		data = request.get_json(force=True)
 		documento_cliente = data.get('documento_cliente')
 		cur.execute('delete from cliente where documento_cliente="{}"'.format(documento_cliente))
+		cnx.commit()
+		cur.close()
+		print('Eliminado')
+
+	CORS(app)
+	@app.route('/eliminar_producto', methods=['DELETE'])
+	def eliminar_prod():
+		cur = cnx.cursor(buffered=True)
+		data = request.get_json(force=True)
+		id_producto = data.get('id_producto')
+		cur.execute('delete from producto where id_producto="{}"'.format(id_producto))
+		cnx.commit()
+		cur.close()
+		print('Eliminado')
+
+	CORS(app)
+	@app.route('/eliminar_pedido', methods=['DELETE'])
+	def eliminar_ped():
+		cur = cnx.cursor(buffered=True)
+		data = request.get_json(force=True)
+		numero_orden = data.get('numero_orden')
+		cur.execute('delete from pedido where numero_orden="{}"'.format(numero_orden))
 		cnx.commit()
 		cur.close()
 		print('Eliminado')
