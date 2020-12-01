@@ -150,8 +150,6 @@ try:
 	def add_com():
 		cur = cnx.cursor()
 		data = request.get_json(force=True)
-		cur = cnx.cursor(buffered=True)
-		data = request.get_json(force=True)
 		documento_usuario = data.get('documento_usuario')
 		documento_cliente = data.get('documento_cliente')
 		comentario = data.get('comentario')
