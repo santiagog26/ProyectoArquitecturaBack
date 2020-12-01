@@ -143,7 +143,7 @@ try:
 	CORS(app)
 	@app.route('/editar_usuarios', methods=['PUT'])
 	def edit_user():
-		cur = cnx.cursor(buffered=True)self.add_url_rule(rule, endpoint, f, **options)
+		cur = cnx.cursor(buffered=True)
 		data = request.get_json(force=True)
 		documento = data.get('documento')
 		contraseña = data.get('contraseña')
