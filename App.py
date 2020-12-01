@@ -64,8 +64,8 @@ try:
 		return jsonify(results=lista)
 
 	CORS(app)
-    @app.route('get_clientes', methods=['GET'])
-    def mostrar_cliente():
+	@app.route('get_clientes', methods=['GET'])
+	def mostrar_cliente():
     	cur = cnx.cursor()
 		sql = ("select * from cliente")
 		cur.execute(sql)
@@ -127,8 +127,8 @@ try:
 		return jsonify(results=lista)
 
 	CORS(app)
-    @app.route('/add_comentarios', methods=['POST'])
-    def add_com():
+	@app.route('/add_comentarios', methods=['POST'])
+	def add_com():
     	cur = cnx.cursor()
     	data = request.get_json(force=True)
     	cur = cnx.cursor(buffered=True)
@@ -141,8 +141,8 @@ try:
     	cur.close
 
 	CORS(app)
-    @app.route('/editar_usuarios', methods=['PUT'])
-    def edit_user():
+	@app.route('/editar_usuarios', methods=['PUT'])
+	def edit_user():
     	cur = cnx.cursor(buffered=True)
     	data = request.get_json(force=True)
     	documento = data.get('documento')
@@ -155,9 +155,9 @@ try:
     	cnx.commit()
     	cur.close
 
-    CORS(app)
-    @app.route('/editar_cliente', methods=['PUT'])
-    def edit_user():
+	CORS(app)
+	@app.route('/editar_cliente', methods=['PUT'])
+	def edit_user():
     	cur = cnx.cursor(buffered=True)
     	data = request.get_json(force=True)
     	documento_cliente = data.get('documento_cliente')
@@ -169,9 +169,9 @@ try:
     	cnx.commit()
     	cur.close
 
-    CORS(app)
-    @app.route('/eliminar_usuarios', methods=['DELETE'])
-    def eliminar_user():
+	CORS(app)
+	@app.route('/eliminar_usuarios', methods=['DELETE'])
+	def eliminar_user():
     	cur = cnx.cursor(buffered=True)
     	data = request.get_json(force=True)
     	documento = data.get('documento')
@@ -180,9 +180,9 @@ try:
     	cur.close()
     	print('Eliminado')
 
-    CORS(app)
-    @app.route('/eliminar_cliente', methods=['DELETE'])
-    def eliminar_client():
+	CORS(app)
+	@app.route('/eliminar_cliente', methods=['DELETE'])
+	def eliminar_client():
     	cur = cnx.cursor(buffered=True)
     	data = request.get_json(force=True)
     	documento_cliente = data.get('documento_cliente')
