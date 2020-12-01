@@ -63,6 +63,26 @@ try:
 			cur.close()
 		return jsonify(results=lista)
 
+
+	CORS(app)
+	@app.route('/get_producto', methods=['GET'])
+	def mostrar_producto():
+		cur = cnx.cursor()
+		sql = ("select * from producto")
+		cur.execute(sql)
+		row = cur.fetchall()
+		lista = list()
+		for i in row:
+			id_producto = i[0]
+			nombre_producto = i[1]
+			descripcion = i[2]
+			precio = i[3]
+			producto = {'id_producto': id_producto, 'nombre_producto': nombre_producto, 'descripcion': descripcion, 'precio': precio}
+			lista.append(producto)
+			cnx.commit()
+			cur.close()
+		return jsonify(results=lista)
+
 	CORS(app)
 	@app.route('/get_clientes', methods=['GET'])
 	def mostrar_cliente():
@@ -84,7 +104,7 @@ try:
 		return jsonify(results=lista)
 
 	CORS(app)
-	@app.route('/	', methods=['GET'])
+	@app.route('/get_pedidos_cliente', methods=['GET'])
 	def mostrar_pedido_cli():
 		cur = cnx.cursor()
 		data = request.get_json(force=True)
