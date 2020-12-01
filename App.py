@@ -167,7 +167,7 @@ try:
 		telefono = data.get('telefono')
 		cur.execute('update cliente set nombre = %s, apellido = %s, correo = %s, telefono = %s where documento_cliente = %s', (nombre,apellido,correo,telefono,documento_cliente))
 		cnx.commit()
-		cur.close
+		cur.close()
 
 	CORS(app)
 	@app.route('/eliminar_usuarios', methods=['DELETE'])
