@@ -190,7 +190,7 @@ try:
 
 	CORS(app)
 	@app.route('/editar_producto', methods=['PUT'])
-	def edit_cli():
+	def edit_pro():
 		cur = cnx.cursor(buffered=True)
 		data = request.get_json(force=True)
 		id_producto = data.get('id_producto')
