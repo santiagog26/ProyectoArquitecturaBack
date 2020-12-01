@@ -73,10 +73,10 @@ try:
 		lista = list()
 		for i in row:
 			documento_cliente = i[0]
-			nombre = i[2]
-			apellido = i[3]
-			correo = i[4]
-			telefono = i[5]
+			nombre = i[1]
+			apellido = i[2]
+			correo = i[3]
+			telefono = i[4]
 			cliente = {'documento_cliente': documento_cliente, 'nombre': nombre, 'apellido': apellido, 'correo': correo, 'telefono': telefono}
 			lista.append(cliente)
 			cnx.commit()
@@ -84,7 +84,7 @@ try:
 		return jsonify(results=lista)
 
 	CORS(app)
-	@app.route('/get_pedidos_cliente', methods=['GET'])
+	@app.route('/	', methods=['GET'])
 	def mostrar_pedido_cli():
 		cur = cnx.cursor()
 		data = request.get_json(force=True)
