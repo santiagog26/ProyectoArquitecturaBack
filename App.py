@@ -138,7 +138,7 @@ try:
 		comentario = data.get('comentario')
 		cur.execute('insert into comentarios values ("%s","%s","%s")',(documento_usuario,documento_cliente,comentario))
 		cnx.commit()
-		cur.close
+		cur.close()
 
 	CORS(app)
 	@app.route('/editar_usuarios', methods=['PUT'])
@@ -153,7 +153,7 @@ try:
 		telefono = data.get('telefono')
 		cur.execute('update usuario set contraseña = %s, nombre = %s, apellido = %s, correo = %s, telefono = %s where documento = %s', (contraseña,nombre,apellido,correo,telefono,documento))
 		cnx.commit()
-		cur.close
+		cur.close()
 
 	CORS(app)
 	@app.route('/editar_cliente', methods=['PUT'])
