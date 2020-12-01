@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import mysql.connector
 from mysql.connector import errorcode
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 from flask_cors import CORS
 import json
 
@@ -18,19 +18,11 @@ CORS(app)
 def hellos():
     return "Hello world"
 
-CORS(app)
-@app.route('/get_pedidos', methods=['GET'])
-def mostrar_pedidos():
-	try:
-		cnx = mysql.connector.connect(user='sebastian', password = 'Holasebas99.', database='proyecto', host='127.0.0.1')
-	except mysql.connector.Error as err:
-		if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
-			print("Something is wrong with your user name or password")
-		elif err.errno == errorcode.ER_BAD_DB_ERROR:
-			print("Database does not exist")
-		else:
-			print(err)
-	else:
+try:
+	cnx = mysql.connector.connect(user='sebastian', password = 'Holasebas99.', database='proyecto', host='127.0.0.1')
+	CORS(app)
+	@app.route('/get_pedidos', methods=['GET'])
+	def mostrar_pedidos():
 		cur = cnx.cursor()
 		sql = ("select * from pedido")
 		cur.execute(sql)
@@ -48,7 +40,12 @@ def mostrar_pedidos():
 			cnx.commit()
 			cur.close()
 		return jsonify(results=lista)
-	cnx.close()	
-
+except mysql.connector.Error as err:
+	if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+		print("Something is wrong with your user name or password")
+	elif err.errno == errorcode.ER_BAD_DB_ERROR:
+		print("Database does not exist")
+	else:
+		print(err)	
 
 app.run(host='0.0.0.0')
