@@ -64,7 +64,7 @@ try:
 		return jsonify(results=lista)
 
 	CORS(app)
-	@app.route('get_clientes', methods=['GET'])
+	@app.route('/get_clientes', methods=['GET'])
 	def mostrar_cliente():
 		cur = cnx.cursor()
 		sql = ("select * from cliente")
