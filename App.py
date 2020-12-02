@@ -153,7 +153,7 @@ try:
 		documento_usuario = data.get('documento_usuario')
 		documento_cliente = data.get('documento_cliente')
 		comentario = data.get('comentario')
-		cur.execute('insert into comentarios values ("%s","%s","%s")',(documento_usuario,documento_cliente,comentario))
+		cur.execute('insert into comentarios (documento_usuario,documento_cliente,comentario) values (%s,%s,%s)',(documento_usuario,documento_cliente,comentario))
 		cnx.commit()
 		cur.close()
 		return 'Agregado';
