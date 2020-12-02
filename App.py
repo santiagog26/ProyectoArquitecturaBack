@@ -103,11 +103,9 @@ try:
 		return jsonify(results=lista)
 
 	CORS(app)
-	@app.route('/get_pedidos_cliente', methods=['GET'])
-	def mostrar_pedido_cli():
+	@app.route('/get_pedidos_cliente/<cliente_documento>', methods=['GET'])
+	def mostrar_pedido_cli(cliente_documento):
 		cur = cnx.cursor()
-		data = request.get_json(force=True)
-		cliente_documento = data.get('cliente_documento')
 		sql = ("select * from pedido where cliente_documento = {}".format(cliente_documento))
 		cur.execute(sql)
 		row = cur.fetchall()
