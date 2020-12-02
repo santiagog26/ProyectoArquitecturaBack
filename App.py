@@ -254,11 +254,10 @@ try:
 		return 'Eliminando';
 
 	CORS(app)
-	@app.route('/eliminar_pedido', methods=['DELETE'])
-	def eliminar_ped():
+	@app.route('/eliminar_pedido/<numero_orden>', methods=['DELETE'])
+	def eliminar_ped(numero_orden):
 		cur = cnx.cursor(buffered=True)
 		data = request.get_json(force=True)
-		numero_orden = data.get('numero_orden')
 		cur.execute('delete from pedido where numero_orden="{}"'.format(numero_orden))
 		cnx.commit()
 		cur.close()
