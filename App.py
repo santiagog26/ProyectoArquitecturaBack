@@ -19,16 +19,20 @@ def hellos():
     return "Hello world"
 
 try:
+	# Conecta con la base de datos del servidor
 	cnx = mysql.connector.connect(user='sebastian', password = 'Holasebas99.', database='proyecto', host='127.0.0.1')
 	
+	# Ruta al get pedidos 
 	CORS(app)
 	@app.route('/get_pedidos', methods=['GET'])
 	def mostrar_pedidos():
 		cur = cnx.cursor()
+		# Línea de consulta sql
 		sql = ("select * from pedido")
 		cur.execute(sql)
 		row = cur.fetchall()
 		lista = list()
+		# Se obtiene los datos de cada fila y se guardan en una lista
 		for i in row:
 			numero_orden = i[0]
 			fecha = i[1]
@@ -40,6 +44,7 @@ try:
 			lista.append(pedido)
 			cnx.commit()
 			cur.close()
+		# Se retorna la lista
 		return jsonify(results=lista)
 
 	CORS(app)
@@ -102,10 +107,12 @@ try:
 			cur.close()
 		return jsonify(results=lista)
 
+	# Ruta get con dato de entrada
 	CORS(app)
 	@app.route('/get_pedidos_cliente/<cliente_documento>', methods=['GET'])
 	def mostrar_pedido_cli(cliente_documento):
 		cur = cnx.cursor()
+		# Línea de consulta de un determinado cliente
 		sql = ("select * from pedido where cliente_documento = {}".format(cliente_documento))
 		cur.execute(sql)
 		row = cur.fetchall()
@@ -141,23 +148,28 @@ try:
 			cur.close()
 		return jsonify(results=lista)
 
+	# Ruta POST para comentarios
 	CORS(app)
 	@app.route('/add_comentarios', methods=['POST'])
 	def add_com():
 		cur = cnx.cursor()
+		# Se obtienen datos de un json
 		data = request.get_json(force=True)
 		documento_usuario = data.get('documento_usuario')
 		documento_cliente = data.get('documento_cliente')
 		comentario = data.get('comentario')
+		# Línea para ejecutar el insert
 		cur.execute('insert into comentarios (documento_usuario,documento_cliente,comentario) values (%s,%s,%s)',(documento_usuario,documento_cliente,comentario))
 		cnx.commit()
 		cur.close()
 		return 'Agregado';
 
+	# Ruta PUT para actualizar
 	CORS(app)
 	@app.route('/editar_usuarios', methods=['PUT'])
 	def edit_user():
 		cur = cnx.cursor(buffered=True)
+		# Request para obtener los datos del json recibido
 		data = request.get_json(force=True)
 		documento = data.get('documento')
 		contraseña = data.get('contraseña')
@@ -165,6 +177,7 @@ try:
 		apellido = data.get('apellido')
 		correo = data.get('correo')
 		telefono = data.get('telefono')
+		# Línea para ejecutar el update con los datos recibidos
 		cur.execute('update usuario set contraseña = %s, nombre = %s, apellido = %s, correo = %s, telefono = %s where documento = %s', (contraseña,nombre,apellido,correo,telefono,documento))
 		cnx.commit()
 		cur.close()
@@ -215,12 +228,15 @@ try:
 		cur.close()
 		return 'Editado';
 
+	# Ruta para hacer DELETE a usuario
 	CORS(app)
 	@app.route('/eliminar_usuarios', methods=['DELETE'])
 	def eliminar_user():
 		cur = cnx.cursor(buffered=True)
+		# Se obtiene con request el dato que llega en json
 		data = request.get_json(force=True)
 		documento = data.get('documento')
+		# Línea sql para eliminar
 		cur.execute('delete from usuario where documento="{}"'.format(documento))
 		cnx.commit()
 		cur.close()
