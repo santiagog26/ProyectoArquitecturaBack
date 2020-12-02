@@ -124,12 +124,10 @@ try:
 		return jsonify(results=lista)
 
 	CORS(app)
-	@app.route('/get_comentarios_cliente', methods=['GET'])
+	@app.route('/get_comentarios', methods=['GET'])
 	def mostrar_comentarios_cli():
 		cur = cnx.cursor()
-		data = request.get_json(force=True)
-		documento_cliente = data.get('documento_cliente')
-		sql = ("select * from comentarios where documento_cliente = {}".format(documento_cliente))
+		sql = ("select * from")
 		cur.execute(sql)
 		row = cur.fetchall()
 		lista = list()
@@ -137,8 +135,8 @@ try:
 			documento_usuario = i[0]
 			documento_cliente = i[1]
 			comentario = i[2]
-			comentarios_cli = {'documento_usuario': documento_usuario, 'documento_cliente': documento_cliente, 'comentario': comentario}
-			lista.append(comentarios_cli)
+			comentarios = {'documento_usuario': documento_usuario, 'documento_cliente': documento_cliente, 'comentario': comentario}
+			lista.append(comentarios)
 			cnx.commit()
 			cur.close()
 		return jsonify(results=lista)
