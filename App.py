@@ -235,6 +235,7 @@ try:
 		cnx.commit()
 		cur.close()
 		print('Eliminado')
+		return 'Eliminando';
 
 	CORS(app)
 	@app.route('/eliminar_producto', methods=['DELETE'])
