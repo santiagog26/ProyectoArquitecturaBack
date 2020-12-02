@@ -156,6 +156,7 @@ try:
 		cur.execute('insert into comentarios values ("%s","%s","%s")',(documento_usuario,documento_cliente,comentario))
 		cnx.commit()
 		cur.close()
+		return 'Agregado';
 
 	CORS(app)
 	@app.route('/editar_usuarios', methods=['PUT'])
@@ -171,6 +172,7 @@ try:
 		cur.execute('update usuario set contraseña = %s, nombre = %s, apellido = %s, correo = %s, telefono = %s where documento = %s', (contraseña,nombre,apellido,correo,telefono,documento))
 		cnx.commit()
 		cur.close()
+		return 'Editado';
 
 	CORS(app)
 	@app.route('/editar_cliente', methods=['PUT'])
@@ -185,6 +187,7 @@ try:
 		cur.execute('update cliente set nombre = %s, apellido = %s, correo = %s, telefono = %s where documento_cliente = %s', (nombre,apellido,correo,telefono,documento_cliente))
 		cnx.commit()
 		cur.close()
+		return 'Editado';
 
 	CORS(app)
 	@app.route('/editar_producto', methods=['PUT'])
@@ -198,6 +201,7 @@ try:
 		cur.execute('update producto set nombre_producto = %s, descripcion = %s, precio = %s where id_producto = %s', (nombre_producto,descripcion,precio,id_producto))
 		cnx.commit()
 		cur.close()
+		return 'Editado';
 
 	CORS(app)
 	@app.route('/editar_pedido', methods=['PUT'])
@@ -213,6 +217,7 @@ try:
 		cur.execute('update pedido set fecha = %s, cliente_documento = %s, empaquetado = %s, domicilio = %s, vendedor = %s where numero_orden = %s', (fecha,cliente_documento,empaquetado,domicilio, vendedor, numero_orden))
 		cnx.commit()
 		cur.close()
+		return 'Editado';
 
 	CORS(app)
 	@app.route('/eliminar_usuarios', methods=['DELETE'])
@@ -224,6 +229,7 @@ try:
 		cnx.commit()
 		cur.close()
 		print('Eliminado')
+		return 'Eliminando';
 
 	CORS(app)
 	@app.route('/eliminar_cliente', methods=['DELETE'])
@@ -247,6 +253,7 @@ try:
 		cnx.commit()
 		cur.close()
 		print('Eliminado')
+		return 'Eliminando';
 
 	CORS(app)
 	@app.route('/eliminar_pedido', methods=['DELETE'])
@@ -258,6 +265,7 @@ try:
 		cnx.commit()
 		cur.close()
 		print('Eliminado')
+		return 'Eliminando';
 
 except mysql.connector.Error as err:
 	if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
