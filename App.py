@@ -127,7 +127,7 @@ try:
 	@app.route('/get_comentarios', methods=['GET'])
 	def mostrar_comentarios_cli():
 		cur = cnx.cursor()
-		sql = ("select * from")
+		sql = ("select * from omentarios")
 		cur.execute(sql)
 		row = cur.fetchall()
 		lista = list()
